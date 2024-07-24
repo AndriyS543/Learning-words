@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,20 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Learning_Words
+namespace Learning_Words.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Products.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Chapter : UserControl
     {
-        public MainWindow()
+        public Chapter()
         {
             InitializeComponent();
-        }
-        private void CloseApp_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

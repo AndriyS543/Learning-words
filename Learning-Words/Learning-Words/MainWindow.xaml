@@ -3,10 +3,98 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Learning_Words"
+        xmlns:vm="clr-namespace:Learning_Words.ViewModel"
+        xmlns:Menu="clr-namespace:Learning_Words.Utilities"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Learn English Words"
+        Height="600"
+        Width="850"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent">
+    <Window.DataContext>
+        <vm:NavigationVM />
+    </Window.DataContext>
     <Grid>
+        <!--// Window Border //-->
+        <Border Background="#FF21282E"
+                CornerRadius="20"/>
+        <Grid>
+            <!--    Base Grid  -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="600"/>
+                <RowDefinition Height="195" />
+            </Grid.RowDefinitions>
 
+            <!--    Curent page     -->
+            <Grid Grid.Column="1"
+                  VerticalAlignment="Top"
+                  Height="550">
+                <ContentControl x:Name="Pages"
+                                Content="{Binding CurrentView}" />
+            </Grid>
+
+            <!--    Navigation Panel     -->
+            <WrapPanel Height="50"                
+                       VerticalAlignment="Bottom"
+                       Background="#272B2F">
+
+                <Border Background="#FF3A9CFF"
+                        CornerRadius="20,0,0,20" />
+
+                <!--// Home //-->
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding HomeCommand}"
+                          IsChecked="True">
+                    <Grid>
+                        <Image Source="Images/img_home.png"
+                               Style="{StaticResource Image_Style}" />
+                        <TextBlock Text="Home"
+                                   Style="{StaticResource Text_Style}" />
+                    </Grid>
+                </Menu:Btn>
+
+                <!--// Dictionary //-->
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding DictionaryCommand}">
+                    <Grid>
+                        <Image Source="Images/img_dictionaries.png"
+                               Style="{StaticResource Image_Style}" />
+                        <TextBlock Text="Dictionary"
+                                   Style="{StaticResource Text_Style}" />
+                    </Grid>
+                </Menu:Btn>
+
+                <!--// Chapter //-->
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding ChaptersCommand}">
+                    <Grid>
+                        <Image Source="Images/img_chapter.png"
+                               Style="{StaticResource Image_Style}" />
+                        <TextBlock Text="Chapters"
+                                   Style="{StaticResource Text_Style}" />
+                    </Grid>
+                </Menu:Btn>
+
+                <!--// Test //-->
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+                          Command="{Binding TestsCommand}">
+                    <Grid>
+                        <Image Source="Images/img_tests.png"
+                               Style="{StaticResource Image_Style}" />
+                        <TextBlock Text="Test"
+                                   Style="{StaticResource Text_Style}" />
+                    </Grid>
+                </Menu:Btn>
+            </WrapPanel>
+            <!--    Exit    -->
+            <Button Style="{StaticResource ExitApp}"
+                    Click="CloseApp_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/img_exit.png" Width="20" Height="20" />
+                </StackPanel>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
