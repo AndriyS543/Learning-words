@@ -14,11 +14,14 @@
     <None Remove="Images\img_dictionaries.png" />
     <None Remove="Images\img_exit.png" />
     <None Remove="Images\img_home.png" />
+    <None Remove="Images\img_no.png" />
     <None Remove="Images\img_tests.png" />
+    <None Remove="Images\img_yes.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\img_exit.png" />
+    <Resource Include="Images\img_no.png" />
     <Resource Include="Images\img_tests.png" />
   </ItemGroup>
 
@@ -29,6 +32,7 @@
   <ItemGroup>
     <Resource Include="Images\img_chapter.png" />
     <Resource Include="Images\img_dictionaries.png" />
+    <Resource Include="Images\img_yes.png" />
   </ItemGroup>
 
 </Project>

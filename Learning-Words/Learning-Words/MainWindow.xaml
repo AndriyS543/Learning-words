@@ -55,16 +55,7 @@
                     </Grid>
                 </Menu:Btn>
 
-                <!--// Dictionary //-->
-                <Menu:Btn Style="{StaticResource BtnStyle}"
-                          Command="{Binding DictionaryCommand}">
-                    <Grid>
-                        <Image Source="Images/img_dictionaries.png"
-                               Style="{StaticResource Image_Style}" />
-                        <TextBlock Text="Dictionary"
-                                   Style="{StaticResource Text_Style}" />
-                    </Grid>
-                </Menu:Btn>
+               
 
                 <!--// Chapter //-->
                 <Menu:Btn Style="{StaticResource BtnStyle}"
@@ -76,7 +67,17 @@
                                    Style="{StaticResource Text_Style}" />
                     </Grid>
                 </Menu:Btn>
-
+                
+                <!--// Dictionary //-->
+                <Menu:Btn Style="{StaticResource BtnStyle}"
+           Command="{Binding DictionaryCommand}">
+                    <Grid>
+                        <Image Source="Images/img_dictionaries.png"
+                Style="{StaticResource Image_Style}" />
+                        <TextBlock Text="Dictionary"
+                    Style="{StaticResource Text_Style}" />
+                    </Grid>
+                </Menu:Btn>
                 <!--// Test //-->
                 <Menu:Btn Style="{StaticResource BtnStyle}"
                           Command="{Binding TestsCommand}">
