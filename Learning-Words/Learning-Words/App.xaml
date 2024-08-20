@@ -19,6 +19,7 @@
                
             </ResourceDictionary.MergedDictionaries>
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:BoolToSymbolConverter x:Key="BoolToSymbolConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

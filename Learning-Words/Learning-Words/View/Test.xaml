@@ -4,16 +4,163 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vm="clr-namespace:Learning_Words.ViewModel"
+             xmlns:Menu="clr-namespace:Learning_Words.Utilities"
              mc:Ignorable="d"
-             d:DesignHeight="600"
-             d:DesignWidth="622"
+             d:DesignHeight="550"
+             d:DesignWidth="850"
              Style="{StaticResource Page_Style}">
 
     <UserControl.DataContext>
         <vm:TestVM/>
     </UserControl.DataContext>
 
-    <Grid > 
-        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="240"/>
+        </Grid.RowDefinitions>
+
+        <!-- First grid in the first row -->
+        <Grid Grid.Row="0" Margin="60,30,60,10" Visibility="{Binding IsStartTest, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border BorderBrush="White" BorderThickness="2">
+                <Grid>
+                    <Button Content="x"  Style="{StaticResource PageButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Command="{Binding StopCommand}"  Margin="0,10,10,0" Width="50" FontSize="12"/>
+
+                    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical" Margin="0 10">
+                        <Label Content="{Binding CurrentWordName}" FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
+                        <Label Content="{Binding CurrentTranscription}" FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
+                    </WrapPanel>
+
+                    <WrapPanel Height="130" Width="350" VerticalAlignment="Bottom" Margin="0,0,0,30" HorizontalAlignment="Center">
+                        <Button Content="{Binding Answer1}" Style="{StaticResource PageButtonStyle}" Command="{Binding AnswerCommand}" CommandParameter="{Binding Answer1}" Margin="20,10,0,10" Width="150" FontSize="12"/>
+                        <Button Content="{Binding Answer2}" Style="{StaticResource PageButtonStyle}" Command="{Binding AnswerCommand}" CommandParameter="{Binding Answer2}" Margin="20,10,0,10" Width="150" FontSize="12"/>
+                        <Button Content="{Binding Answer3}" Style="{StaticResource PageButtonStyle}" Command="{Binding AnswerCommand}" CommandParameter="{Binding Answer3}" Margin="20,0,0,0" Width="150" FontSize="12"/>
+                        <Button Content="{Binding Answer4}" Style="{StaticResource PageButtonStyle}" Command="{Binding AnswerCommand}" CommandParameter="{Binding Answer4}" Margin="20,0,0,0" Width="150" FontSize="12"/>
+                    </WrapPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <!-- Second grid in the second row   -->
+        <Border Grid.Row="1" Margin="10" BorderBrush="White" BorderThickness="2" Visibility="Visible">
+            <Grid>
+                <!-- Grid for Test Settings  -->
+                <Grid Visibility="{Binding IsSettingsTest, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <!-- DataGrid for displaying chapters -->
+                            <DataGrid Style="{StaticResource DataGridStyle}"
+                                  Background="Transparent"
+                                  Margin="10,10,15,10"
+                                  Height="200"
+                                  Width="250"
+                                  ItemsSource="{Binding AllChapters}"
+                                  SelectedItem="{Binding SelectedChapter, Mode=TwoWay}"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  SelectionMode="Extended"
+                                  IsReadOnly="True"
+                                  CanUserResizeRows="False"
+                                  CanUserResizeColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Chapters" Binding="{Binding NameChapter}" Width="150" EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}" />
+                                    <DataGridTemplateColumn Header="➖/✔" Width="80">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding IsUsed, Converter={StaticResource BoolToSymbolConverter}}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+
+
+                            </DataGrid>
+                        </StackPanel>
+                        <WrapPanel Orientation="Vertical" Width="200" Margin="20,0,0,0">
+                            <Label Content="{Binding LabelCountWord}" FontSize="16" Foreground="White" Margin="0,0,0,0"/>
+                            <Label Content="{Binding LabelCountChapter}" FontSize="16" Foreground="White" Margin="0,0,0,0"/>
+                        </WrapPanel>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <WrapPanel Margin="0,0,20,0" Orientation="Vertical" VerticalAlignment="Top">
+                            <Menu:Btn IsChecked="{Binding IsAnswerTranslationSelected, Mode=TwoWay}"  
+                                  Style="{StaticResource BtnStyle}"  
+                                  Margin="0,10">
+                                <Grid Background="#FF21282E">
+                                    <TextBlock Text="Translate-Word" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           Foreground="White"/>
+                                </Grid>
+                            </Menu:Btn>
+
+                            <Menu:Btn Style="{StaticResource BtnStyle}"
+                                  IsChecked="{Binding IsAnswerWordSelected, Mode=TwoWay}">
+                                <Grid Background="#FF21282E">
+                                    <TextBlock Text="Word-Translate" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center" 
+                                           Foreground="White"/>
+                                </Grid>
+                            </Menu:Btn>
+                            <Button Content="Start"
+                                Width="210"
+                                Style="{StaticResource PageButtonStyle}"
+                                Command="{Binding StartCommand}"/>
+                        </WrapPanel>
+                    </WrapPanel>
+                </Grid>
+
+                <!-- Grid for Static Test -->
+                <Grid Visibility="{Binding IsStartTest, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <WrapPanel>
+
+                        <DataGrid Style="{StaticResource DataGridStyle}"
+                              Width="400"
+                              ItemsSource="{Binding AnswerWords}"
+                              Margin="10"
+                              HorizontalAlignment="Left"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"
+                              SelectionMode="Extended"
+                              IsReadOnly="True"
+                              CanUserResizeRows="False"
+                              CanUserResizeColumns="False"
+                              Foreground="White">
+
+                            <!-- Columns for Words DataGrid -->
+                            <DataGrid.Columns >
+                                <DataGridTextColumn Header="Word" Foreground="White" Binding="{Binding NameWord}" Width="*"  FontSize="12" EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}"/>
+                                <DataGridTextColumn Header="Translation" Foreground="White" Binding="{Binding Translation}" FontSize="12" Width="*" EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}"/>
+                                <DataGridTextColumn Header="Transcription" Foreground="White" Binding="{Binding Transcription}" FontSize="12" Width="*" EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}"/>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                        <WrapPanel Orientation="Vertical" Width="190">
+
+                            <Label Content="{Binding LabelCorrectAnswers}" FontSize="16" Foreground="White" Margin="0,1,0,0"/>
+                            <Label Content="{Binding LabelMistake}" FontSize="16" Foreground="White" Margin="0,10,0,0"/>
+                            <Label Content="{Binding LabelPercentage}" FontSize="16" Foreground="White" Margin="0,10,0,0"/>
+                            <Button Content="..." Margin="0,65,0,0" Background="Transparent" Foreground="White" BorderThickness="1" BorderBrush="White"  Width="25" Height="25" HorizontalAlignment="Left" Command="{Binding OpenDataGridCommand}" />
+
+                        </WrapPanel>
+                        <WrapPanel Margin="0,10,0,0" Orientation="Vertical"  >
+                            <ComboBox 
+    ItemsSource="{Binding TestResults}" SelectedItem="{Binding SelectedTestResult}" 
+    Style="{StaticResource ComboBoxDictionaryStyle}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </WrapPanel>
+                    </WrapPanel>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
