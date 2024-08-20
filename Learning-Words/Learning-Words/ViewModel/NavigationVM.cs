@@ -37,7 +37,7 @@ namespace Learning_Words.ViewModel
         private void Dictionary(object obj) => CurrentView = new DictionaryVM();
         private void Test(object obj) => CurrentView = new TestVM();
 
-        private void Chapter(object obj) => CurrentView = new ChapterVM();
+        private void Chapter(object obj) => CurrentView = new ChapterVM(_userCollection, _chapterProviders, _creator);
         public NavigationVM(Collection userCollection, ICollectionProviders collectionProviders, IChapterProviders chapterProviders, IWordProviders wordProviders, ICreator creator)
         {
             _collectionProviders = collectionProviders;

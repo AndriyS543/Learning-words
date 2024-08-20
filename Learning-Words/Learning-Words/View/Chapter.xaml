@@ -8,10 +8,7 @@
              d:DesignHeight="600"
              d:DesignWidth="850"
              Style="{StaticResource Page_Style}">
-    <UserControl.DataContext>
-        <vm:ChapterVM />
-    </UserControl.DataContext>
-
+ 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="640"/>
@@ -31,7 +28,7 @@
                     <!-- Description -->
                     <WrapPanel Orientation="Horizontal" Margin="0,30,0,0">
                         <Label Content="Description:" FontSize="16" Foreground="White"  />
-                        <TextBox Style="{StaticResource ChapterTextBox_Style}"  Text="{Binding tbDescription, UpdateSourceTrigger=PropertyChanged}" MaxLength="250"/>
+                        <TextBox Style="{StaticResource DescriptionChapterTextBox_Style}"  Text="{Binding tbDescription, UpdateSourceTrigger=PropertyChanged}" MaxLength="250"/>
                     </WrapPanel>
 
                     <!-- Buttons Yes No -->
