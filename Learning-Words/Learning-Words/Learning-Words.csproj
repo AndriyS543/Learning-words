@@ -14,6 +14,7 @@
     <None Remove="Images\img_dictionaries.png" />
     <None Remove="Images\img_exit.png" />
     <None Remove="Images\img_home.png" />
+    <None Remove="Images\img_magnifying_glass.png" />
     <None Remove="Images\img_no.png" />
     <None Remove="Images\img_tests.png" />
     <None Remove="Images\img_yes.png" />
@@ -21,6 +22,7 @@
 
   <ItemGroup>
     <Resource Include="Images\img_exit.png" />
+    <Resource Include="Images\img_magnifying_glass.png" />
     <Resource Include="Images\img_no.png" />
     <Resource Include="Images\img_tests.png" />
   </ItemGroup>

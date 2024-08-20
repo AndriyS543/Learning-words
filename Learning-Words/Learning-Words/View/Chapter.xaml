@@ -72,7 +72,7 @@
                 </ComboBox>
 
 
-                <!-- Buttons -->
+                <!-- Buttons and TextBox -->
                 <TextBox Text="{Binding tbAddChapter, Mode=TwoWay}" Style="{StaticResource TextBox_Style}"  Width="200" Margin="0,10,0,0" MaxLength="30"/>
                 <Button Content="Add chapter" Style="{StaticResource PageButtonStyle}"  Command="{Binding AddChapterCommand}" Margin="0,0,0,0" />
                 <TextBox Text="{Binding tbRenameChapter, Mode=TwoWay}" Style="{StaticResource TextBox_Style}" Width="200" Margin="0,10,0,0" MaxLength="30"/>

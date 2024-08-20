@@ -18,5 +18,21 @@
                 Value="22,0,0,0" />
 
     </Style>
-    
+    <Style x:Key="ImageDictionary_Style"
+TargetType="Image">
+
+        <Setter Property="HorizontalAlignment"
+     Value="Left" />
+
+        <Setter Property="Stretch"
+     Value="Uniform" />
+        <Setter Property="Height"
+     Value="25" />
+        <Setter Property="Width"
+     Value="25" />
+        <Setter Property="Margin"
+     Value="0,10,0,0" />
+
+    </Style>
+
 </ResourceDictionary>

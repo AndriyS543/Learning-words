@@ -6,10 +6,67 @@
              xmlns:vm="clr-namespace:Learning_Words.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="600"
-             d:DesignWidth="622"
+             d:DesignWidth="850"
              Style="{StaticResource Page_Style}">
     <UserControl.DataContext>
         <vm:DictionaryVM />
     </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="640"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <!-- DataGrid -->
+        <Grid Grid.Column="0">
+            <DataGrid Style="{StaticResource DataGridStyle}"
+              Margin="10,5,10,5"
+              ItemsSource="{Binding Words}"
+              SelectedItem="{Binding SelectedWord}" >
+
+                <!-- Columns -->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Word" Binding="{Binding NameWord}" Width="*"  EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}" />
+                    <DataGridTextColumn Header="Translation" Binding="{Binding Translation}" Width="*"  EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}" />
+                    <DataGridTextColumn Header="Transcription" Binding="{Binding Transcription}" Width="*"  EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <!-- Controls on Column 1 -->
+        <Grid Grid.Column="1" HorizontalAlignment="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="270"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <WrapPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Margin="0,65,4,0">
+                <!-- ComboBox -->
+                <ComboBox 
+                  ItemsSource="{Binding Chapters}" 
+                  SelectedItem="{Binding SelectedChapter, Mode=TwoWay}"  
+                  Style="{StaticResource ComboBoxDictionaryStyle}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NameChapter}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="35"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Style="{StaticResource TextBox_Style}"  Text="{Binding InputText, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Image Grid.Column="1"  Source="pack://application:,,,/Images/img_magnifying_glass.png" Style="{StaticResource ImageDictionary_Style}"/>
+                </Grid>
+
+                <!-- Buttons -->
+                <Button Content="Add word" Style="{StaticResource PageButtonStyle}" Command="{Binding AddWordCommand}"/>
+                <Button Content="Delete word" Style="{StaticResource PageButtonStyle}" Command="{Binding DeleteWordCommand}"/>
+            </WrapPanel>
+   
+        </Grid>
+    </Grid>
 </UserControl>
