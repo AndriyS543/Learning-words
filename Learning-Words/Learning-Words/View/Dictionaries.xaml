@@ -8,9 +8,7 @@
              d:DesignHeight="600"
              d:DesignWidth="850"
              Style="{StaticResource Page_Style}">
-    <UserControl.DataContext>
-        <vm:DictionaryVM />
-    </UserControl.DataContext>
+ 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="640"/>
@@ -22,7 +20,8 @@
             <DataGrid Style="{StaticResource DataGridStyle}"
               Margin="10,5,10,5"
               ItemsSource="{Binding Words}"
-              SelectedItem="{Binding SelectedWord}" >
+              SelectedItem="{Binding SelectedWord}" 
+              CurrentCellChanged="DataGrid_CurrentCellChanged">
 
                 <!-- Columns -->
                 <DataGrid.Columns>
