@@ -277,11 +277,18 @@ namespace Learning_Words.ViewModel
             StopCommand = new RelayCommand(StopTest);
             StartCommand = new RelayCommand(StartTest);
             AnswerCommand = new RelayCommand(CheckAnswer);
-      
+            OpenDataGridCommand = new RelayCommand(OpenDataGridWindow);
+
 
             InitializeAsync().ConfigureAwait(false);
         }
-      
+
+        private void OpenDataGridWindow(object parameter)
+        {
+            var dataGridWindow = new Learning_Words.Windows.DataGridWindowContainer(SelectedTestResult.Words);
+            dataGridWindow.ShowDialog();
+        }
+
         #region Initialization and Setup
 
         /// <summary>

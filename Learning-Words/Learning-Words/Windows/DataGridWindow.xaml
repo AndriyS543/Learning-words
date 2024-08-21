@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Learning_Words.Windows.DataGridWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="600" Width="600">
+    <Grid>
+        <DataGrid Style="{StaticResource DataGridStyle}"
+                  Margin="10,50,10,5"
+                  ItemsSource="{Binding Words}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Extended"
+                  IsReadOnly="True"
+                  CanUserResizeRows="False"
+                  CanUserResizeColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Word" Foreground="White" Binding="{Binding NameWord}" Width="*" EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}" />
+                <DataGridTextColumn Header="Translation" Foreground="White" Binding="{Binding Translation}" Width="*" EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}" />
+                <DataGridTextColumn Header="Transcription" Foreground="White" Binding="{Binding Transcription}" Width="*" EditingElementStyle="{StaticResource DataGridEditingTextBoxStyle}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

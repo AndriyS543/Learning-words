@@ -1,0 +1,25 @@
+﻿<Window x:Class="Learning_Words.Windows.DataGridWindowContainer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Learning_Words.Windows"
+        Title="Learn English Words"
+        Height="600"
+        Width="600"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent">
+    <Border BorderBrush="White" BorderThickness="1">
+        <Grid Background="#FF21282E">
+
+            <Button Style="{StaticResource ExitApp}"
+         Click="CloseApp_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/img_exit.png" Width="20" Height="20" />
+                </StackPanel>
+            </Button>
+            <local:DataGridWindow x:Name="DataGridUserControl" Width="600"/>
+
+        </Grid>
+    </Border>
+</Window>
