@@ -10,10 +10,7 @@
              d:DesignWidth="850"
              Style="{StaticResource Page_Style}">
 
-    <UserControl.DataContext>
-        <vm:TestVM/>
-    </UserControl.DataContext>
-
+ 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="300"/>
